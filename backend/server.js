@@ -15,7 +15,7 @@ app.use(express.json());
 
 mongoose
   .connect(mongoURI, {})
-  .then(() => console.log("Connected to MongoDB"))
+  .then(() => console.log("MongoDB successfully connected 🍃"))
   .catch((err) => console.error("Error connecting to MongoDB:", err));
 
 app.use("/auth", authRoutes);
@@ -25,7 +25,7 @@ app.use("/bookings", bookingRoutes);
 app.use("/rooms", roomRoutes);
 app.use("/resources", resourceRoutes);
 app.use("/enrollments", enrollmentRoutes);
-app.use("/notifications", notificationRoutes); // Mount notification routes
+app.use("/notifications", notificationRoutes);
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`\nServer running on port ${PORT} 🔥`));

@@ -1,5 +1,3 @@
-// classSessionModel.js
-
 const mongoose = require("mongoose");
 
 const classSessionSchema = new mongoose.Schema({

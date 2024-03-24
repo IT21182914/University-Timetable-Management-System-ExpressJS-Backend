@@ -1,5 +1,3 @@
-// classSessionController.js
-
 const ClassSession = require("../models/classSessionModel");
 const Notification = require("../models/notificationModel");
 
@@ -10,10 +8,15 @@ exports.createClassSession = async (req, res) => {
 
     // Notify users about the new class session
     const message = `New class session created for course ${classSession.courseName}`;
-    const notifications = await Notification.create({
-      message,
-      user: classSession.students,
-    });
+
+    // Check if students are present in the request body
+    if (req.body.students && req.body.students.length > 0) {
+      const notifications = await Notification.create({
+        type: "ClassSession", // Add the type field
+        message,
+        user: req.body.students, // Use students from the request body
+      });
+    }
 
     res
       .status(201)

@@ -46,14 +46,11 @@ exports.getStudentTimetable = async (req, res) => {
         return {
           courseName: enrollment.course.courseName || "Unknown Course",
           schedule: enrollment.course.schedule || "Unknown Schedule",
-          // Add other timetable details as needed
         };
       } else {
-        // Handle cases where the course is not found
         return {
           courseName: "Unknown Course",
           schedule: "Unknown Schedule",
-          // Add other timetable details as needed
         };
       }
     });

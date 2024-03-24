@@ -1,4 +1,3 @@
-// bookingMiddleware.js
 const Booking = require("../models/bookingModel");
 
 // Middleware to check for overlaps in bookings
@@ -6,7 +5,7 @@ exports.checkBookingOverlap = async (req, res, next) => {
   try {
     const { roomId, startTime, endTime } = req.body;
 
-    // Check if there are any existing bookings for the given room and overlapping time range
+    // Check for existing bookings that overlap with the requested time range
     const existingBookings = await Booking.find({
       roomId,
       $or: [
@@ -16,7 +15,7 @@ exports.checkBookingOverlap = async (req, res, next) => {
       ],
     });
 
-    // If there are existing bookings, return an error
+    // If there are existing overlapping bookings, return an error
     if (existingBookings.length > 0) {
       return res
         .status(400)

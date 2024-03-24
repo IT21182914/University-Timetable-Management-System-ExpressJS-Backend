@@ -12,5 +12,3 @@ exports.createBooking = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
-// Other controller functions for updating and deleting bookings can be implemented here
